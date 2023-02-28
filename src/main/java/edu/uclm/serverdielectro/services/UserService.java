@@ -71,7 +71,7 @@ public class UserService {
 		userInfo.put("username", usuariologin.getUsername());
 		userInfo.put("role", usuariologin.getRole());
 		userInfo.put("tokenPass", usuariologin.getTokenPass());
-		userInfo.put("delegacion", usuariologin.getDelegacion());
+		userInfo.put("delegacion", usuariologin.getDelegation());
 		userInfo.put("email", usuariologin.getEmail());
 
 		return userInfo.toString();
@@ -93,7 +93,7 @@ public class UserService {
 			
 			usuario.setUsername(username);
 			usuario.setPassword(password);
-			usuario.setDelegacion(delegacion);
+			usuario.setDelegation(delegacion);
 			usuario.setEmail(email);
 			
 			this.userDAO.save(usuario);
@@ -155,7 +155,7 @@ public class UserService {
 			userInfo.put("username", username);
 			userInfo.put("role", usuariologin.getRole());
 			userInfo.put("tokenPass", usuariologin.getTokenPass());
-			userInfo.put("delegacion", usuariologin.getDelegacion());
+			userInfo.put("delegacion", usuariologin.getDelegation());
 			userInfo.put("email", usuariologin.getEmail());
 	
 			return userInfo.toString();
@@ -204,7 +204,7 @@ public class UserService {
 		userInfo.put("username", username);
 		userInfo.put("role", usuariologin.getRole());
 		userInfo.put("tokenPass", usuariologin.getTokenPass());
-		userInfo.put("delegacion", usuariologin.getDelegacion());
+		userInfo.put("delegacion", usuariologin.getDelegation());
 		userInfo.put("email", usuariologin.getEmail());
 
 		return userInfo.toString();
@@ -229,7 +229,7 @@ public class UserService {
 			secureUser.put("username", users.get(i).getUsername());
 			secureUser.put("role", users.get(i).getRole());
 			secureUser.put("tokenPass", users.get(i).getTokenPass());
-			secureUser.put("delegacion", users.get(i).getDelegacion());
+			secureUser.put("delegacion", users.get(i).getDelegation());
 			secureUser.put("email", users.get(i).getEmail());
 			
 			array.put(secureUser);

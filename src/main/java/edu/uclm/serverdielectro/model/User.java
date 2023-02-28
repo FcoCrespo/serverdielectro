@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name="USERS",
 		indexes = {
-		@Index(unique = true, columnList = "email"),
 		@Index(unique = true, columnList = "username")
 })
 public class User implements Comparable<User> {
@@ -61,7 +60,7 @@ public class User implements Comparable<User> {
 	 * 
 	 * @author FcoCrespo
 	 */
-	private String delegacion;
+	private String delegation;
 
 	/**
 	 * email.
@@ -71,7 +70,7 @@ public class User implements Comparable<User> {
 	private String email;
 
 	/**
-	 * Constructor de Usuario.
+	 * Constructor de User.
 	 * 
 	 * @author FcoCrespo
 	 */
@@ -81,12 +80,12 @@ public class User implements Comparable<User> {
 		this.id = UUID.randomUUID().toString();
 	}
 	
-	public User(@NotNull final String username, @NotNull final String password, final String role, final String delegacion, @NotNull String email) {
+	public User(@NotNull final String username, @NotNull final String password, final String role, final String delegation, @NotNull String email) {
 		this.id = UUID.randomUUID().toString();
 		this.username = username;
 		this.setPassword(password);
 		this.role = role;
-		this.delegacion = delegacion;
+		this.delegation = delegation;
 		this.email = email;
 	}
 
@@ -146,12 +145,12 @@ public class User implements Comparable<User> {
 		this.role = role;
 	}
 	
-	public String getDelegacion() {
-		return delegacion;
+	public String getDelegation() {
+		return delegation;
 	}
 
-	public void setDelegacion(String delegacion) {
-		this.delegacion = delegacion;
+	public void setDelegation(String delegation) {
+		this.delegation = delegation;
 	}
 	
 	public String getEmail() {
@@ -177,7 +176,7 @@ public class User implements Comparable<User> {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role="
-				+ role + ", delegacion=" + delegacion + ", tokenPass=" + tokenPass + "]";
+				+ role + ", delegation=" + delegation + ", tokenPass=" + tokenPass + "]";
 	}
 
 }

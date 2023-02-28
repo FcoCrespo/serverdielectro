@@ -13,6 +13,9 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -24,6 +27,9 @@ import edu.uclm.serverdielectro.exceptions.UsuarioYaExisteException;
 import edu.uclm.serverdielectro.model.User;
 import edu.uclm.serverdielectro.services.UserService;
 
+@Configuration
+@Profile("one")
+@PropertySource("file:/usr/share/application.properties")
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(OrderAnnotation.class)

@@ -14,6 +14,10 @@ import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,11 +32,14 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.uclm.serverdielectro.exceptions.UsuarioYaExisteException;
 import edu.uclm.serverdielectro.services.UserService;
 
-
+import org.springframework.stereotype.*;
+import org.springframework.beans.factory.annotation.*;
 /**
  * @author FcoCrespo
  */
-
+@Configuration
+@Profile("one")
+@PropertySource("file:/usr/share/application.properties")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -41,6 +48,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+		@Autowired
+	    Environment env;
 	
 	
 	
@@ -65,11 +74,23 @@ public class UserController {
 			final InputStream targetStream = new FileInputStream(file);
 		
 			properties.load(targetStream);
+
+			String url = properties.getProperty("url");
+			String passbd = properties.getProperty("passbd");
+			String portbd = properties.getProperty("portbd");
+			String portserver = properties.getProperty("portserver");
+			String userbd1 = properties.getProperty("userbd1");
+			String userbd2 = properties.getProperty("userbd2");
+			String email = properties.getProperty("email");
+			String passemail = properties.getProperty("passemail");
 			
-			String nombre = properties.getProperty("nombre");
+			String datos = " url: " + url + " passbd: " + passbd + " portbd: " + portbd + "\n" +
+						   " portserver: " + portserver + " userbd1: " + userbd1 + " userbd2: " + userbd2 + "\n" +
+						   " email: " + email + " passemail: " + passemail + " ->> usuario.login: "+env.getProperty("app.url");
+			
 			targetStream.close();
 			
-			return ResponseEntity.ok(System.getProperty("catalina.home") +" y obtenemos "+nombre);
+			return ResponseEntity.ok(System.getProperty("catalina.home") +" y obtenemos \n"+datos);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			return ResponseEntity.ok("Error");
