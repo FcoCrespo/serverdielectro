@@ -70,7 +70,7 @@ public class UserService {
 		userInfo.put("id", usuariologin.getId());
 		userInfo.put("username", usuariologin.getUsername());
 		userInfo.put("role", usuariologin.getRole());
-		userInfo.put("tokenPass", usuariologin.getTokenPass());
+		userInfo.put("tokenpass", usuariologin.getTokenpass());
 		userInfo.put("delegacion", usuariologin.getDelegation());
 		userInfo.put("email", usuariologin.getEmail());
 
@@ -119,14 +119,14 @@ public class UserService {
 	}
 	
 	/**
-	 * Obtiene si el tokenPass pertenece a algún usuario del sistema en ese momento
+	 * Obtiene si el tokenpass pertenece a algún usuario del sistema en ese momento
 	 * @param tokenpass cadena unica de caracteres perteneciente al usuario para la comprobacion de acceso temporal al sistema
 	 * @return se devuelve si existe un usuario vinculado al tokenPass en el sistema
 	 */
-	public boolean findByTokenPass(String tokenpass) {
+	public boolean findByTokenpass(String tokenpass) {
 
 		User usuariologin;
-		usuariologin = this.userDAO.findByTokenPass(tokenpass);
+		usuariologin = this.userDAO.findByTokenpass(tokenpass);
 		return usuariologin != null;
 
 	}
@@ -135,7 +135,7 @@ public class UserService {
 	 * Envia al usuario que trata de acceder sus datos para que acceda al sistema
 	 * @param username usuario que quiere acceder
 	 * @param password contrasena del usuario que quiere acceder
-	 * @return se retorna los datos del usuarios con un tokenPass temporal que se corresponderá al usuario
+	 * @return se retorna los datos del usuarios con un tokenpass temporal que se corresponderá al usuario
 	 * @throws UsuarioYaExisteException 
 	 */
 	public String sendUser(String username, String password) throws UsuarioYaExisteException {
@@ -146,7 +146,7 @@ public class UserService {
 			usuariologin = this.userDAO.findByUsernameAndPassword(username, org.apache.commons.codec.digest.DigestUtils.sha512Hex(password));
 			usuariologin.setUsername(username);
 			usuariologin.setPassword(password);
-			usuariologin.newTokenPass();
+			usuariologin.newTokenpass();
 			
 			this.userDAO.save(usuariologin);
 			
@@ -154,7 +154,7 @@ public class UserService {
 			userInfo.put("id", usuariologin.getId());
 			userInfo.put("username", username);
 			userInfo.put("role", usuariologin.getRole());
-			userInfo.put("tokenPass", usuariologin.getTokenPass());
+			userInfo.put("tokenpass", usuariologin.getTokenpass());
 			userInfo.put("delegacion", usuariologin.getDelegation());
 			userInfo.put("email", usuariologin.getEmail());
 	
@@ -172,10 +172,10 @@ public class UserService {
 	 * @param tokenpass cadena unica de caracteres perteneciente al usuario para la comprobacion de acceso temporal al sistema
 	 * @return devuelve si el usuario es o no es admin
 	 */
-	public boolean findByTokenPassAdmin(String tokenpass) {
+	public boolean findByTokenpassAdmin(String tokenpass) {
 
 		User usuariologin;
-		usuariologin = this.userDAO.findByTokenPass(tokenpass);
+		usuariologin = this.userDAO.findByTokenpass(tokenpass);
 		if (usuariologin != null) {
 			
 			return usuariologin.getRole().equals("admin");
@@ -203,7 +203,7 @@ public class UserService {
 		userInfo.put("id", usuariologin.getId());
 		userInfo.put("username", username);
 		userInfo.put("role", usuariologin.getRole());
-		userInfo.put("tokenPass", usuariologin.getTokenPass());
+		userInfo.put("tokenpass", usuariologin.getTokenpass());
 		userInfo.put("delegacion", usuariologin.getDelegation());
 		userInfo.put("email", usuariologin.getEmail());
 
@@ -228,7 +228,7 @@ public class UserService {
 			secureUser.put("id", users.get(i).getId());
 			secureUser.put("username", users.get(i).getUsername());
 			secureUser.put("role", users.get(i).getRole());
-			secureUser.put("tokenPass", users.get(i).getTokenPass());
+			secureUser.put("tokenpass", users.get(i).getTokenpass());
 			secureUser.put("delegacion", users.get(i).getDelegation());
 			secureUser.put("email", users.get(i).getEmail());
 			

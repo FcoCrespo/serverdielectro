@@ -159,7 +159,7 @@ public class UserController {
 	@GetMapping(value = "/all")
 	public ResponseEntity<String> allUsers(@RequestParam("tokenpass") final String tokenpass){
 
-			final boolean existe = this.userService.findByTokenPass(tokenpass);
+			final boolean existe = this.userService.findByTokenpass(tokenpass);
 			if (existe) {
 				LOG.info("Get all Users");
 				return ResponseEntity.ok(this.userService.findAll());
@@ -179,7 +179,7 @@ public class UserController {
 	public ResponseEntity<String> getUser(@RequestParam("tokenpass") final String tokenpass,
 			@RequestParam("username") final String username){
 
-			final boolean existe = this.userService.findByTokenPass(tokenpass);
+			final boolean existe = this.userService.findByTokenpass(tokenpass);
 			if (existe) {
 				LOG.info("Get user");
 				return ResponseEntity.ok(this.userService.findByUsername(username));
@@ -200,7 +200,7 @@ public class UserController {
 	public ResponseEntity<String> deleteUser(@RequestParam("username") final String username,
 			@RequestParam("tokenpass") final String tokenpass) {
 
-			final boolean existe = this.userService.findByTokenPassAdmin(tokenpass);
+			final boolean existe = this.userService.findByTokenpassAdmin(tokenpass);
 			if (existe) {
 				LOG.info("Delete user " + username);
 				this.userService.deleteUser(username);
@@ -227,7 +227,7 @@ public class UserController {
 			final JSONObject jso = new JSONObject(message);
 			
 
-			final boolean tokenpassCorrect = this.userService.findByTokenPassAdmin(tokenpass);
+			final boolean tokenpassCorrect = this.userService.findByTokenpassAdmin(tokenpass);
 
 			if (tokenpassCorrect) {
 				final String username = jso.getString("username");
@@ -284,7 +284,7 @@ public class UserController {
 			@PathVariable final String username, @RequestParam("tokenpass") final String tokenpass) throws UsuarioYaExisteException {
 		
 
-			final boolean existe = this.userService.findByTokenPass(tokenpass);
+			final boolean existe = this.userService.findByTokenpass(tokenpass);
 			if (existe) {
 					final JSONObject jso = new JSONObject(mensajerecibido);
 					

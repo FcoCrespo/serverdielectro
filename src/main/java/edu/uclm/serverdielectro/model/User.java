@@ -53,7 +53,7 @@ public class User implements Comparable<User> {
 	 * 
 	 * @author FcoCrespo
 	 */
-	private String tokenPass;
+	private String tokenpass;
 
 	/**
 	 * delegacion.
@@ -161,22 +161,22 @@ public class User implements Comparable<User> {
 		this.email = email;
 	}
 	
-	public String getTokenPass() {
-		return tokenPass;
+	public String getTokenpass() {
+		return tokenpass;
 	}
 
-	public void setTokenPass(String tokenPass) {
-		this.tokenPass = tokenPass;
+	public void setTokenpass(String tokenpass) {
+		this.tokenpass = tokenpass;
 	}
 
-	public void newTokenPass() {
-		this.tokenPass = UUID.randomUUID().toString();
+	public void newTokenpass() {
+		this.tokenpass = UUID.randomUUID().toString();
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role="
-				+ role + ", delegation=" + delegation + ", tokenPass=" + tokenPass + "]";
+				+ role + ", delegation=" + delegation + ", tokenPass=" + tokenpass + "]";
 	}
 
 }

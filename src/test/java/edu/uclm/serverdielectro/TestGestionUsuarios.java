@@ -29,7 +29,7 @@ import edu.uclm.serverdielectro.services.UserService;
 
 @Configuration
 @Profile("one")
-@PropertySource("file:/usr/share/application.properties")
+@PropertySource("file:/usr/share/applicationtest.properties")
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(OrderAnnotation.class)
@@ -129,7 +129,7 @@ public class TestGestionUsuarios {
 			
 			JsonNode node = new ObjectMapper().readTree(userJSON);
 			
-			boolean userExists = userService.findByTokenPass(node.get("tokenPass").textValue());
+			boolean userExists = userService.findByTokenpass(node.get("tokenpass").textValue());
 			
 			assertTrue(userExists);
 			
@@ -152,7 +152,7 @@ public class TestGestionUsuarios {
 			
 			JsonNode node = new ObjectMapper().readTree(userJSON);
 			
-			boolean userExists = userService.findByTokenPass(node.get("tokenPass").textValue());
+			boolean userExists = userService.findByTokenpass(node.get("tokenpass").textValue());
 			
 			assertTrue(userExists);
 			
