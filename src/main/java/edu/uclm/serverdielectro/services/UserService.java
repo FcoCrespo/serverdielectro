@@ -24,11 +24,11 @@ public class UserService {
 	 * @param username nomrbe del usuario en el sistema a ser registrado
 	 * @param role rol del usuario en el sistema a ser registrado
 	 * @param email email del usuario en el sistema a ser registrado
-	 * @param delegacion delegacion del usuario en el sistema a ser registrado
+	 * @param delegation delegacion del usuario en el sistema a ser registrado
 	 */
-	public User register(String username, String password, String role, String delegacion,  String email) throws UsuarioYaExisteException{
+	public User register(String username, String password, String role, String delegation,  String email) throws UsuarioYaExisteException{
 
-		User usuario = new User(username, password, role, delegacion, email);
+		User usuario = new User(username, password, role, delegation, email);
 		
 		try {
 			this.userDAO.save(usuario);
@@ -71,7 +71,7 @@ public class UserService {
 		userInfo.put("username", usuariologin.getUsername());
 		userInfo.put("role", usuariologin.getRole());
 		userInfo.put("tokenpass", usuariologin.getTokenpass());
-		userInfo.put("delegacion", usuariologin.getDelegation());
+		userInfo.put("delegation", usuariologin.getDelegation());
 		userInfo.put("email", usuariologin.getEmail());
 
 		return userInfo.toString();
@@ -85,7 +85,7 @@ public class UserService {
 	 * @param email contrasena del usuario que se actualizara
 	 * @throws UsuarioYaExisteException 
 	 */
-	public void update(String username, String password, String delegacion, String email) throws UsuarioYaExisteException {
+	public void update(String username, String password, String delegation, String email) throws UsuarioYaExisteException {
 	
 		try {
 			
@@ -93,7 +93,7 @@ public class UserService {
 			
 			usuario.setUsername(username);
 			usuario.setPassword(password);
-			usuario.setDelegation(delegacion);
+			usuario.setDelegation(delegation);
 			usuario.setEmail(email);
 			
 			this.userDAO.save(usuario);
@@ -155,7 +155,7 @@ public class UserService {
 			userInfo.put("username", username);
 			userInfo.put("role", usuariologin.getRole());
 			userInfo.put("tokenpass", usuariologin.getTokenpass());
-			userInfo.put("delegacion", usuariologin.getDelegation());
+			userInfo.put("delegation", usuariologin.getDelegation());
 			userInfo.put("email", usuariologin.getEmail());
 	
 			return userInfo.toString();
@@ -204,7 +204,7 @@ public class UserService {
 		userInfo.put("username", username);
 		userInfo.put("role", usuariologin.getRole());
 		userInfo.put("tokenpass", usuariologin.getTokenpass());
-		userInfo.put("delegacion", usuariologin.getDelegation());
+		userInfo.put("delegation", usuariologin.getDelegation());
 		userInfo.put("email", usuariologin.getEmail());
 
 		return userInfo.toString();
@@ -229,7 +229,7 @@ public class UserService {
 			secureUser.put("username", users.get(i).getUsername());
 			secureUser.put("role", users.get(i).getRole());
 			secureUser.put("tokenpass", users.get(i).getTokenpass());
-			secureUser.put("delegacion", users.get(i).getDelegation());
+			secureUser.put("delegation", users.get(i).getDelegation());
 			secureUser.put("email", users.get(i).getEmail());
 			
 			array.put(secureUser);

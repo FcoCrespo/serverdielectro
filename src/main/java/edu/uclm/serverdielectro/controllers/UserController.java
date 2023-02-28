@@ -37,9 +37,7 @@ import org.springframework.beans.factory.annotation.*;
 /**
  * @author FcoCrespo
  */
-@Configuration
-@Profile("one")
-@PropertySource("file:/usr/share/application.properties")
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -226,6 +224,8 @@ public class UserController {
 			
 			final JSONObject jso = new JSONObject(message);
 			
+			System.out.println(jso.toString());
+			
 
 			final boolean tokenpassCorrect = this.userService.findByTokenpassAdmin(tokenpass);
 
@@ -255,9 +255,9 @@ public class UserController {
 
 					final String password = jso.getString("password");
 					final String role = jso.getString("role");
-					final String delegacion = jso.getString("delegacion");
+					final String delegation = jso.getString("delegation");
 
-					this.userService.register(username, password, role, delegacion, emailUser);
+					this.userService.register(username, password, role, delegation, emailUser);
 
 					LOG.info("Usuario registrado.");
 					return ResponseEntity.ok("Usuario registrado correctamente.");
@@ -299,9 +299,9 @@ public class UserController {
 	
 						final String password = jso.getString("password");
 						final String email = jso.getString("email");
-						final String delegacion = jso.getString("delegacion");
+						final String delegation = jso.getString("delegation");
 	
-						this.userService.update(username, password, delegacion, email);
+						this.userService.update(username, password, delegation, email);
 	
 						LOG.info("[SERVER] Usuario actualizado.");
 						return ResponseEntity.ok("Usuario actualizado correctamente.");			

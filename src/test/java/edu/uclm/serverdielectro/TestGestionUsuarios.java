@@ -27,9 +27,11 @@ import edu.uclm.serverdielectro.exceptions.UsuarioYaExisteException;
 import edu.uclm.serverdielectro.model.User;
 import edu.uclm.serverdielectro.services.UserService;
 
-@Configuration
-@Profile("one")
-@PropertySource("file:/usr/share/applicationtest.properties")
+//DESCOMENTAR PARA REALIZAR LOS TEST
+
+//@Configuration
+//@Profile("one")
+//@PropertySource("file:/usr/share/applicationtest.properties")
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(OrderAnnotation.class)

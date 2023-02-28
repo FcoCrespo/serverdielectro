@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
  * @author FcoCrespo
  */
 @Entity
-@Table(name="USERS",
+@Table(name="users",
 		indexes = {
 		@Index(unique = true, columnList = "username")
 })
