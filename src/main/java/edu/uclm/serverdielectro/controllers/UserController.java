@@ -34,12 +34,16 @@ import edu.uclm.serverdielectro.services.UserService;
 
 import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.*;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 /**
  * @author FcoCrespo
  */
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin("*")
 public class UserController {
 	private static final Log LOG = LogFactory.getLog(UserController.class);
 
